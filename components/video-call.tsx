@@ -76,18 +76,10 @@ interface VideoCallProps {
   isMinimized?: boolean
   onToggleMinimize?: () => void
   isAIAgent?: boolean
-  sessionId?: string
-}
-
-interface RTCConfiguration {
-  iceServers: RTCIceServer[]
-  iceCandidatePoolSize?: number
-}
-
-interface RTCIceServer {
-  urls: string | string[]
-  username?: string
-  credential?: string
+  sessionId: string // Make sessionId required
+  userId: string // Add userId
+  userType: 'doctor' | 'patient' // Add userType
+  userName: string // Add userName
 }
 
 declare global {
