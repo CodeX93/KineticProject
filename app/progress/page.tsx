@@ -1,3 +1,4 @@
+
 "use client"
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -369,173 +370,181 @@ export default function ProgressPage() {
           
           {/* Recovery Summary */}
           {!loading && !error && (
-          <div className="mb-10">
-            <h2 className="text-lg font-semibold text-[#111827] mb-4">Recovery Summary</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {recoverySummary.map((item) => (
-                <div key={item.id} className="bg-white rounded-lg shadow-sm p-6">
-                  <div className="flex items-center mb-4">
-                    <div className={`w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center mr-3`}>
-                      {item.icon}
+            <div className="mb-10">
+              <h2 className="text-lg font-semibold text-[#111827] mb-4">Recovery Summary</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {recoverySummary.map((item) => (
+                  <div key={item.id} className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="flex items-center mb-4">
+                      <div className={`w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center mr-3`}>
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold">{item.title}</h3>
+                        <p className="text-sm text-gray-500">{item.value}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold">{item.title}</h3>
-                      <p className="text-sm text-gray-500">{item.value}</p>
-                    </div>
+                    <Button
+                      variant="outline"
+                      className="w-full border-[#014585] text-[#014585] hover:bg-[#014585] hover:text-white"
+                    >
+                      {item.action}
+                    </Button>
                   </div>
-                  <Button
-                    variant="outline"
-                    className="w-full border-[#014585] text-[#014585] hover:bg-[#014585] hover:text-white"
-                  >
-                    {item.action}
-                  </Button>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Weekly Activity */}
-          <div className="mb-10">
-            <h2 className="text-lg font-semibold text-[#111827] mb-4">Weekly Activity</h2>
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Day
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Exercise
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Difficulty
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Duration
-                    </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      <span className="sr-only">Status</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {weeklyActivity.map((activity, index) => (
-                    <tr key={index}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
-                            <Activity className="h-4 w-4 text-gray-500" />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{activity.day}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{activity.exercise}</div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span
-                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            activity.status === "Completed"
-                              ? "bg-green-100 text-green-800"
-                              : activity.status === "Missed"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-yellow-100 text-yellow-800"
-                          }`}
-                        >
-                          {activity.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{activity.difficulty}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{activity.duration}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">{activity.icon}</td>
+          {!loading && !error && (
+            <div className="mb-10">
+              <h2 className="text-lg font-semibold text-[#111827] mb-4">Weekly Activity</h2>
+              <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Day
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Exercise
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Status
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Difficulty
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Duration
+                      </th>
+                      <th scope="col" className="relative px-6 py-3">
+                        <span className="sr-only">Status</span>
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {weeklyActivity.map((activity, index) => (
+                      <tr key={index}>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0 h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center">
+                              <Activity className="h-4 w-4 text-gray-500" />
+                            </div>
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">{activity.day}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-900">{activity.exercise}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span
+                            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                              activity.status === "Completed"
+                                ? "bg-green-100 text-green-800"
+                                : activity.status === "Missed"
+                                  ? "bg-red-100 text-red-800"
+                                  : "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
+                            {activity.status}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{activity.difficulty}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{activity.duration}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">{activity.icon}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Therapist Feedback */}
-          <div className="mb-10">
-            <h2 className="text-lg font-semibold text-[#111827] mb-4">Therapist Feedback</h2>
-            <div className="space-y-4">
-              {therapistFeedback.map((feedback) => (
-                <div key={feedback.id} className="bg-white rounded-lg shadow-sm p-4 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full overflow-hidden mr-4">
-                      <Image
-                        src={feedback.avatar || "/placeholder.svg"}
-                        alt={feedback.name}
-                        width={40}
-                        height={40}
-                        className="object-cover"
-                      />
+          {!loading && !error && (
+            <div className="mb-10">
+              <h2 className="text-lg font-semibold text-[#111827] mb-4">Therapist Feedback</h2>
+              <div className="space-y-4">
+                {therapistFeedback.map((feedback) => (
+                  <div key={feedback.id} className="bg-white rounded-lg shadow-sm p-4 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full overflow-hidden mr-4">
+                        <Image
+                          src={feedback.avatar || "/placeholder.svg"}
+                          alt={feedback.name}
+                          width={40}
+                          height={40}
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-medium">{feedback.name}</h3>
+                        <p className="text-sm text-gray-500">{feedback.feedback}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-medium">{feedback.name}</h3>
-                      <p className="text-sm text-gray-500">{feedback.feedback}</p>
-                    </div>
+                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <MessageSquare className="h-5 w-5 text-gray-500" />
+                    </Button>
                   </div>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <MessageSquare className="h-5 w-5 text-gray-500" />
-                  </Button>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Goals & Milestones */}
-          <div className="mb-10">
-            <h2 className="text-lg font-semibold text-[#111827] mb-4">Goals & Milestones</h2>
-            <div className="space-y-4">
-              {goalsAndMilestones.map((goal) => (
-                <div key={goal.id} className="bg-white rounded-lg shadow-sm p-4 flex justify-between items-center">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mr-4">
-                      {goal.icon}
+          {!loading && !error && (
+            <div className="mb-10">
+              <h2 className="text-lg font-semibold text-[#111827] mb-4">Goals & Milestones</h2>
+              <div className="space-y-4">
+                {goalsAndMilestones.map((goal) => (
+                  <div key={goal.id} className="bg-white rounded-lg shadow-sm p-4 flex justify-between items-center">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mr-4">
+                        {goal.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-medium">{goal.title}</h3>
+                        <p className="text-sm text-gray-500">{goal.target}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-medium">{goal.title}</h3>
-                      <p className="text-sm text-gray-500">{goal.target}</p>
-                    </div>
+                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <ChevronRight className="h-5 w-5 text-gray-500" />
+                    </Button>
                   </div>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <ChevronRight className="h-5 w-5 text-gray-500" />
-                  </Button>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Button className="bg-[#014585] hover:bg-[#013a70]" onClick={handleExportData}>
-              <Download className="mr-2 h-4 w-4" /> Download Progress Report
-            </Button>
-            <Button variant="outline" className="border-[#014585] text-[#014585] hover:bg-[#014585] hover:text-white">
-              <Share2 className="mr-2 h-4 w-4" /> Share with Therapist
-            </Button>
-          </div>
+          {!loading && !error && (
+            <div className="flex flex-wrap gap-4">
+              <Button className="bg-[#014585] hover:bg-[#013a70]" onClick={handleExportData}>
+                <Download className="mr-2 h-4 w-4" /> Download Progress Report
+              </Button>
+              <Button variant="outline" className="border-[#014585] text-[#014585] hover:bg-[#014585] hover:text-white">
+                <Share2 className="mr-2 h-4 w-4" /> Share with Therapist
+              </Button>
+            </div>
           )}
         </div>
       </div>
