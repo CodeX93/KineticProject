@@ -26,7 +26,7 @@ const nextConfig = {
       },
       {
         source: '/ws/:path*',
-        destination: `${apiUrl.replace('http', 'ws')}/ws/:path*`,
+        destination: 'http://localhost:8000/ws/:path*',
       },
     ];
   },

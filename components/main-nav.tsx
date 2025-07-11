@@ -39,6 +39,12 @@ export function MainNav() {
         >
           Resources
         </ScrollLink>
+        <Link
+          href="/video-call-pose"
+          className="text-sm font-medium text-white transition-colors hover:text-white/80"
+        >
+          Video Call
+        </Link>
       </nav>
     </div>
   )
